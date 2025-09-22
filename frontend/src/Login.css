@@ -1,0 +1,70 @@
+.navbar h2{
+     color: black;
+     margin-left: 12px;
+     margin-top: 12px;
+
+}
+
+.front-page{
+  
+    align-items: center;
+   
+}
+
+.register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 50vh;
+    color: black;
+    background-color: white;
+    
+}
+
+.register h1 {
+    color: black;
+}
+
+.register p{
+    color: black;
+    margin-top: 2px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+  #para{
+    margin-top: 2px;
+  } 
+
+#input{
+    min-width: 50vh;   
+    width: 50vh;
+    background: white;
+    border: solid gray;
+    border-radius: 20px;
+    color: black;
+    padding: 0.8rem;
+    margin-top: 20px;
+
+}
+
+.log-btn{
+     display: flex;
+     justify-content: center;
+      
+     width: 20vh;
+    background-color: black;
+     color: white;
+     border: solid black;
+     border-radius: 25px;
+     padding: 0.8rem;
+     text-align: center;
+     margin-top: 25px;
+     align-items: center;
+}

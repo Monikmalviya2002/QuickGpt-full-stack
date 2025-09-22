@@ -1,0 +1,91 @@
+.sidebar{
+    background-color: #171717;
+    color:#b4b4b4;
+    height: 100vh;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: transparent;
+    border: solid rgb(255, 255,255,0.5);
+    cursor: pointer;
+}
+
+.logo{
+    height: 25px;
+    width: 25px;
+    background-color: #ffff;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.button i{
+    font-size: 22px;
+
+}
+
+.history{
+    margin: 2px;
+    padding: 8px;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: thin;                  /* Firefox */
+  scrollbar-color:  #212121;
+}
+
+button:hover{
+    background-color: rgba(180, 180, 180, 0.09);
+}
+
+.history li{
+    list-style-type: none;
+    cursor: pointer;
+    padding: 2px 5px;
+    margin-bottom: 0.3rem;
+    font-size: 16px;
+    border: solid 11px transparent;
+    position: relative;
+    border-radius: 12px;
+}
+
+.history li:hover{
+    background-color: rgba(180, 180, 180, 0.09);
+}
+
+.sign{
+    margin: 10px;
+    padding: 10px;
+    font-size: 15px;
+    text-align: center;
+    border-top: solid rgba(255, 255, 255, 0.5);
+}
+
+.fa-trash{
+    right: 0;
+    position: absolute;
+    opacity: 0;
+}
+
+.history li:hover .fa-trash{
+    opacity: 1;
+    color: #fff;
+} 
+
+.fa-trash:hover{
+    color: red !important;
+}
+
+.highlighted{
+    background-color: rgba(180, 180, 180, 0.05);
+    border-radius: 10px;
+}
