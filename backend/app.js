@@ -1,39 +1,43 @@
-import express from "express"; 
+import express from "express";
 import cors from "cors";
-import "dotenv/config";
 import cookieParser from "cookie-parser";
+import "dotenv/config";
 import connectDB from "./config/database.js";
 import chatRoutes from "./routes/chat.js";
 import authRoutes from "./routes/auth.js";
 
-
-
 const app = express();
 
-const corsOptions = {
-  origin: "http://localhost:5173",
-  credentials: true,
+// ✅ CORS setup
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 
-};
-
-app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/api", chatRoutes)
-app.use("/api" , authRoutes)
+// ✅ Simple test route
+app.get("/test", (req, res) => {
+  res.json({ message: "✅ Main app /test route working!" });
+});
 
+// ✅ API routes
+app.use("/api", authRoutes);
+app.use("/api", chatRoutes);
+
+// ✅ Connect DB and start server
+const PORT = process.env.PORT || 7777;
 
 connectDB()
-.then(()=>{
-    console.log("✅ DATABASE connection is succesfull");
-
-
-app.listen(7777,()=>{
-    console.log("✅ server is active on 7777");
-})
-})
-
-.catch(()=>{
-    console.log("❌DATABASE connection is failed");
-})
+  .then(() => {
+    console.log("✅ DATABASE connected successfully");
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`✅ Server running on http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("❌ DATABASE connection failed:", err.message);
+  });
