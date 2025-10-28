@@ -11,7 +11,7 @@ import axios from 'axios';
             const getAllThreads = async () => {
                try {
              const response = await axios.get(
-                "http://localhost:7777/api/thread",
+                "https://quickgpt-full-stack.onrender.com/api/thread",
                   {},
                   { withCredentials: true }
                      );
@@ -42,7 +42,7 @@ import axios from 'axios';
                    setcurrThreadId(newThreadId);
                            try {
                        const response = await axios.get(
-                   `http://localhost:7777/api/thread/${newThreadId}`,
+                   `https://quickgpt-full-stack.onrender.com/thread/${newThreadId}`,
                       { withCredentials: true }
                          );
                    console.log(response.data);
@@ -57,7 +57,7 @@ import axios from 'axios';
                         const deleteThread = async(threadId)=>{
                           try{
                             const response = await axios.delete(
-                         `http://localhost:7777/api/thread/${threadId}`,
+                         `https://quickgpt-full-stack.onrender.com/api/thread/${threadId}`,
                         { withCredentials: true });
                           console.log(response.data); 
                            setAllThread(prev=>prev.filter(thread=>thread.threadId !==threadId));

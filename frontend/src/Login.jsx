@@ -18,7 +18,7 @@ const Login = () => {
       if (isLogin) {
         // login
         const res = await axios.post(
-          "http://localhost:7777/api/login",
+          "https://quickgpt-full-stack.onrender.com/api/login",
           { emailId, password },
           { withCredentials: true }
         );
@@ -26,9 +26,9 @@ const Login = () => {
       
         navigate("/");
       } else {
-        // signup
+       
         const res = await axios.post(
-          "http://localhost:7777/api/signup",
+          "https://quickgpt-full-stack.onrender.com/api/signup",
           { emailId, password },
           { withCredentials: true }
         );

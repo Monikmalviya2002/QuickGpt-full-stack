@@ -3,7 +3,7 @@ import './ChatWindow.css';
 import { Mycontext } from './Mycontext';
 import axios from 'axios';
 import {ScaleLoader} from "react-spinners";
-import Chat from './Chat.jsx';
+import Chat from './Chat.jsx';s
 import { useNavigate } from 'react-router-dom';
 import Login from './Login.jsx';
 
@@ -22,7 +22,7 @@ const ChatWindow = () => {
 
             try {
             const res = await axios.post(
-                "http://localhost:7777/api/chat",
+                "https://quickgpt-full-stack.onrender.com/api/chat",
                 { message: prompt, threadId: currThreadId}, 
              { headers: { "Content-Type": "application/json" }, withCredentials: true }
                      );
@@ -66,7 +66,7 @@ const ChatWindow = () => {
                       
               
                        const res = await axios.post(
-                  "http://localhost:7777/api/logout",
+                  "https://quickgpt-full-stack.onrender.com/api/logout",
                          {},
                           { withCredentials: true }
                         );
