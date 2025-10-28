@@ -9,91 +9,90 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-
   const navigate = useNavigate();
 
-  
+  // ✅ Use your environment variable (works in local & production)
+  const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:7777";
+
   const handleAuth = async () => {
     try {
       if (isLogin) {
-        // login
+        // 🔹 Login
         const res = await axios.post(
-          "https://quickgpt-full-stack.onrender.com/api/login",
+          `${API_BASE}/api/login`,
           { emailId, password },
           { withCredentials: true }
         );
         console.log("Login success:", res.data);
-      
         navigate("/");
       } else {
-       
+        // 🔹 Signup
         const res = await axios.post(
-          "https://quickgpt-full-stack.onrender.com/api/signup",
+          `${API_BASE}/api/signup`,
           { emailId, password },
           { withCredentials: true }
         );
         console.log("Signup success:", res.data);
         alert("Signup successfully!");
         navigate("/");
-                    }
-             } catch (err) {
-          console.error("Auth error:", err.response?.data || err.message);
-         alert("Something went wrong!");
-        }
-      };
+      }
+    } catch (err) {
+      console.error("Auth error:", err.response?.data || err.message);
+      alert("Something went wrong!");
+    }
+  };
 
-       const handleSubmit = (e) => {
-           e.preventDefault();
-         setError("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError("");
 
-           if (!emailId || !password) {
-           setError("Email and password are required.");
-            return;
-               }
+    if (!emailId || !password) {
+      setError("Email and password are required.");
+      return;
+    }
 
-                if (!isLogin && password !== confirmPassword) {
-                 setError("Passwords do not match.");
-                   return;
-                  }
+    if (!isLogin && password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
 
-               
-               handleAuth();
-              };
+    handleAuth();
+  };
 
-               return (
-                 <div className="front-page">
-                  <div className="navbar">
-                     <h2>QuickGpt</h2>
-                     </div>
+  return (
+    <div className="front-page">
+      <div className="navbar">
+        <h2>QuickGpt</h2>
+      </div>
 
-                  <div className="register">
-                  <h1 className="heading">{isLogin ? "Log in" : "Sign up"}</h1>
-                   <p>
-                       {isLogin
-                       ? "Welcome back! Please log in."
-                    : "Create an account to get smarter responses."}
-                        </p>
+      <div className="register">
+        <h1 className="heading">{isLogin ? "Log in" : "Sign up"}</h1>
+        <p>
+          {isLogin
+            ? "Welcome back! Please log in."
+            : "Create an account to get smarter responses."}
+        </p>
 
-                    {error && <p id="para" style={{ color: "red" }}>{error}</p>}
+        {error && <p id="para" style={{ color: "red" }}>{error}</p>}
 
-                    <form className="form" onSubmit={handleSubmit}>
-                       <input
-                        type="email"
-                 placeholder="Email Id"
-                     value={emailId}
-                     onChange={(e) => setEmailId(e.target.value)}
-                       id="input"
-                  />
-                   <input
-                 type="password"
-                  placeholder="Password"
-                  value={password}
-              onChange={(e) => setPassword(e.target.value)}
-               id="input"
-                 />
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Email Id"
+            value={emailId}
+            onChange={(e) => setEmailId(e.target.value)}
+            id="input"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            id="input"
+          />
 
-                 {!isLogin && (
-              <input
+          {!isLogin && (
+            <input
               type="password"
               placeholder="Confirm Password"
               value={confirmPassword}
