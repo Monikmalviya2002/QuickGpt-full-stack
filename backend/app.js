@@ -8,10 +8,10 @@ import authRoutes from "./routes/auth.js";
 
 const app = express();
 
-// ✅ CORS setup
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://quick-gpt-full-stack-k27j.vercel.app/",
     credentials: true,
   })
 );
@@ -19,16 +19,11 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-// ✅ Simple test route
-app.get("/test", (req, res) => {
-  res.json({ message: "✅ Main app /test route working!" });
-});
 
-// ✅ API routes
 app.use("/api", authRoutes);
 app.use("/api", chatRoutes);
 
-// ✅ Connect DB and start server
+
 const PORT = process.env.PORT || 7777;
 
 connectDB()
