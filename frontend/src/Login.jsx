@@ -11,8 +11,9 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // ✅ Use your environment variable (works in local & production)
-  const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:7777";
+  
+ const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:7777";
+
 
   const handleAuth = async () => {
     try {

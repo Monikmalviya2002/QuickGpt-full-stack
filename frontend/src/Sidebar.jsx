@@ -8,8 +8,9 @@ import axios from 'axios';
 const Sidebar = () => {
   const { allThread, setAllThread, currThreadId, setPrompt, setReply, setNewChat, setcurrThreadId, setPrevChats } = useContext(Mycontext);
 
-  // ✅ Use environment variable for backend API
-  const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:7777";
+
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:7777";
+
 
   const getAllThreads = async () => {
     try {

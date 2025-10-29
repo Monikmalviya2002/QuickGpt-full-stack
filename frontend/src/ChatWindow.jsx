@@ -13,8 +13,9 @@ const ChatWindow = () => {
   const [isopen, setIsopen] = useState(false);
   const navigate = useNavigate();
 
-  // ✅ Use environment variable for backend API
+ 
   const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:7777";
+
 
   const getReply = async () => {
     setLoading(true);
