@@ -11,8 +11,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://quick-gpt-full-stack-k27j.vercel.app/",
-    credentials: true,
+    origin: "https://quick-gpt-full-stack-k27j.vercel.app/" || "http://localhost:5173",
+    credentials: true
   })
 );
 
